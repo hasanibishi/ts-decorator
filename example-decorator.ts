@@ -11,8 +11,17 @@ const Details = (
 ) => {
     propertyDescriptor.value = (...args: unknown[]) => {
         let [name, color, doors] = args;
-        return `The name of car is ${name} and has ${color} color and ${doors} doors.`
+        return `The name of car is ${name} and has ${color} color and ${doors} doors.`;
     }
+}
+
+const Param = (
+    target: Object,
+    key: string,
+    index: number
+) => {
+    const paramPosition = index;
+    // console.log(paramPosition);
 }
 
 @Name('BMW')
@@ -22,7 +31,7 @@ class Car {
     name!: string; // The name property will be injected by the decorator!
 
     @Details
-    getDetails(name: string, color: string, doors: number) {
+    getDetails(name: string, color: string, @Param doors: number) {
         // Returning details using @Details decorator
     }
 

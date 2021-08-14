@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 const Name = (name) => {
     return (constructor) => {
         constructor.prototype.name = name;
@@ -18,6 +21,10 @@ const Details = (target, key, propertyDescriptor) => {
         let [name, color, doors] = args;
         return `The name of car is ${name} and has ${color} color and ${doors} doors.`;
     };
+};
+const Param = (target, key, index) => {
+    const paramPosition = index;
+    // console.log(paramPosition);
 };
 let Car = class Car {
     constructor(color, doors) {
@@ -30,6 +37,7 @@ let Car = class Car {
 };
 __decorate([
     Details,
+    __param(2, Param),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String, Number]),
     __metadata("design:returntype", void 0)
